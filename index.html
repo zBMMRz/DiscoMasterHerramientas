@@ -24,26 +24,95 @@ height:100vh;
 background:white;
 }
 
-#ar-button{
+/* BOTON AR */
+
+.button {
+
 position:absolute;
+
 bottom:40px;
 left:50%;
+
 transform:translateX(-50%);
 
-padding:16px 28px;
+text-decoration:none;
 
-background:black;
-color:white;
+color:#fff;
 
-border:none;
-border-radius:14px;
+background:linear-gradient(
+45deg,
+#0ce39a,
+#69007f,
+#fc0987
+);
 
-font-size:18px;
+padding:14px 25px;
+
+border-radius:12px;
+
+font-size:1.1em;
 font-weight:bold;
 
 cursor:pointer;
 
-box-shadow:0 4px 15px rgba(0,0,0,0.2);
+border:none;
+
+overflow:hidden;
+
+}
+
+.button span{
+position:relative;
+z-index:1;
+}
+
+.button::before{
+
+content:"";
+
+position:absolute;
+
+inset:1px;
+
+background:#272727;
+
+border-radius:11px;
+
+transition:0.5s;
+
+}
+
+.button:hover::before{
+opacity:0.7;
+}
+
+.button::after{
+
+content:"";
+
+position:absolute;
+
+inset:0px;
+
+background:linear-gradient(
+45deg,
+#0ce39a,
+#69007f,
+#fc0987
+);
+
+border-radius:11px;
+
+transition:0.5s;
+
+opacity:0;
+
+filter:blur(20px);
+
+}
+
+.button:hover::after{
+opacity:1;
 }
 
 </style>
@@ -57,10 +126,11 @@ src="./Disco3D.glb"
 
 ar
 ar-modes="scene-viewer webxr quick-look"
-ar-scale="fixed"
 
 camera-controls
 auto-rotate
+
+interaction-prompt="auto"
 
 shadow-intensity="1"
 environment-image="neutral"
@@ -68,13 +138,14 @@ exposure="1.2"
 
 camera-orbit="0deg 75deg 2m"
 
->
+style="width:100vw;height:100vh;">
 
-<button id="ar-button" slot="ar-button">
-Ver en AR
+<button class="button" slot="ar-button">
+<span>Ver en AR</span>
 </button>
 
 </model-viewer>
 
 </body>
+
 </html>
