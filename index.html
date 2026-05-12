@@ -3,14 +3,54 @@
 
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script type="module"
 src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
 </script>
 
+<style>
+
+body{
+margin:0;
+background:white;
+overflow:hidden;
+font-family:Arial;
+}
+
+model-viewer{
+width:100vw;
+height:100vh;
+background:white;
+}
+
+#ar-button{
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+
+padding:16px 28px;
+
+background:black;
+color:white;
+
+border:none;
+border-radius:14px;
+
+font-size:18px;
+font-weight:bold;
+
+cursor:pointer;
+
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+</style>
+
 </head>
 
-<body style="margin:0;">
+<body>
 
 <model-viewer
 src="./Disco3D.glb"
@@ -21,29 +61,17 @@ ar-scale="fixed"
 
 camera-controls
 auto-rotate
+
 shadow-intensity="1"
 environment-image="neutral"
-exposure="1"
+exposure="1.2"
 
-style="width:100vw;height:100vh;background:#111;">
+camera-orbit="0deg 75deg 2m"
 
-<button slot="ar-button"
-style="
-background:black;
-color:white;
-border:none;
-padding:12px 20px;
-border-radius:10px;
-position:absolute;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-font-size:16px;
-cursor:pointer;
-">
+>
 
+<button id="ar-button" slot="ar-button">
 Ver en AR
-
 </button>
 
 </model-viewer>
